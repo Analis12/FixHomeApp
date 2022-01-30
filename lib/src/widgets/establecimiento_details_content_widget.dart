@@ -1,4 +1,4 @@
-import 'package:fishome/src/models/establishment_model.dart';
+import 'package:fixhome/src/models/establishment_model.dart';
 import 'package:flutter/material.dart';
 
 class establishDetailsContentWidget extends StatelessWidget {

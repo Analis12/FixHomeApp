@@ -1,5 +1,5 @@
-import 'package:fishome/src/providers/main_provider.dart';
-import 'package:fishome/src/theme/constant_values.dart';
+import 'package:fixhome/src/providers/main_provider.dart';
+import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';

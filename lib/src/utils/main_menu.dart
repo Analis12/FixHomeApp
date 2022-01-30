@@ -1,6 +1,6 @@
-import 'package:fishome/src/widgets/add_establishment_widget.dart';
-import 'package:fishome/src/widgets/services_home_widget.dart';
-import 'package:fishome/src/widgets/settings_widget.dart';
+import 'package:fixhome/src/widgets/add_establishment_widget.dart';
+import 'package:fixhome/src/widgets/services_home_widget.dart';
+import 'package:fixhome/src/widgets/settings_widget.dart';
 import 'package:flutter/material.dart';
 
 class ItemMenu {

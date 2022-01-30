@@ -1,5 +1,5 @@
-import 'package:fishome/src/models/establishment_model.dart';
-import 'package:fishome/src/widgets/add_establishment_widget.dart';
+import 'package:fixhome/src/models/establishment_model.dart';
+import 'package:fixhome/src/widgets/add_establishment_widget.dart';
 import 'package:flutter/material.dart';
 
 class EstablishmentDetailWidget extends StatefulWidget {

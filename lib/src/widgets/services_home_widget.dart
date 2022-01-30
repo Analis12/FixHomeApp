@@ -1,7 +1,7 @@
-import 'package:fishome/src/models/establishment_model.dart';
-import 'package:fishome/src/pages/carpinter_page.dart';
-import 'package:fishome/src/theme/constant_values.dart';
-import 'package:fishome/src/utils/main_menu.dart';
+import 'package:fixhome/src/models/establishment_model.dart';
+import 'package:fixhome/src/pages/carpinter_page.dart';
+import 'package:fixhome/src/theme/constant_values.dart';
+import 'package:fixhome/src/utils/main_menu.dart';
 import 'package:flutter/material.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -54,9 +54,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                       );
                                     },
-                                    title: Text(e.title, style: titleStyle),
+                                    title: Text(e.title, style: headerStyle),
                                     leading: SizedBox(
-                                      child: Image.asset(e.image),
+                                      child: Image.asset(
+                                        e.image,
+                                        width: 130,
+                                        height: 130,
+                                      ),
                                     ),
                                   ))))
                           .toList()))

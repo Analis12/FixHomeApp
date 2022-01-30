@@ -1,6 +1,11 @@
-import 'package:fishome/src/pages/home_page.dart';
-import 'package:fishome/src/providers/main_provider.dart';
-import 'package:fishome/src/theme/app_theme.dart';
+import 'package:fixhome/src/pages/home_page.dart';
+import 'package:fixhome/src/pages/login_page.dart';
+import 'package:fixhome/src/pages/signup_page.dart';
+import 'package:fixhome/src/providers/main_provider.dart';
+import 'package:fixhome/src/theme/app_theme.dart';
+import 'package:fixhome/src/widgets/add_establishment_widget.dart';
+import 'package:fixhome/src/widgets/services_home_widget.dart';
+import 'package:fixhome/src/widgets/settings_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +38,12 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 title: 'Flutter Demo',
                 theme: AppTheme.themeData(mainProvider.mode),
+                routes: {
+                  "*/login": (context) => const LoginPage(),
+                  "/settings": (context) => const SettingsWidget(),
+                  "/singup": (context) => const SignUpPage(),
+                },
+                //initialRoute: "/login",
                 home: const MyHomePage(),
               ),
             );

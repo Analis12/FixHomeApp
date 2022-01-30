@@ -1,8 +1,8 @@
-import 'package:fishome/src/models/establishment_model.dart';
-import 'package:fishome/src/services/establish_service.dart';
-import 'package:fishome/src/theme/constant_values.dart';
-import 'package:fishome/src/widgets/add_establishment_widget.dart';
-import 'package:fishome/src/widgets/establishment_card.dart';
+import 'package:fixhome/src/models/establishment_model.dart';
+import 'package:fixhome/src/services/establish_service.dart';
+import 'package:fixhome/src/theme/constant_values.dart';
+import 'package:fixhome/src/widgets/add_establishment_widget.dart';
+import 'package:fixhome/src/widgets/establishment_card.dart';
 import 'package:flutter/material.dart';
 
 class EstablecimientoWidget extends StatefulWidget {
@@ -13,6 +13,7 @@ class EstablecimientoWidget extends StatefulWidget {
 }
 
 class _EstablecimientoWidgetState extends State<EstablecimientoWidget> {
+  int i = 0;
   final EstablecimientoService _establecimientoService =
       EstablecimientoService();
   List<Establish>? _listaMantenimientos;
@@ -29,33 +30,47 @@ class _EstablecimientoWidgetState extends State<EstablecimientoWidget> {
   Widget build(BuildContext context) {
     // ignore: avoid_print
     print("2. Visualización del widget");
-    return Center(
+    return Material(
       child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: true,
-          title: Text('Establecimientos', style: headerStyle),
-          actions: const [],
-          centerTitle: true,
-          elevation: 4,
-          toolbarHeight: 80,
-        ),
-        body: SafeArea(
-          //padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 4.0),
-          child: _listaMantenimientos == null
-              ? const Center(
-                  child: SizedBox.square(
-                      dimension: 50.0, child: CircularProgressIndicator()),
-                )
-              : _listaMantenimientos!.isEmpty
-                  ? const Center(
-                      child: Text("No existen establecimientos registrados"))
-                  : ListView(
-                      children: _listaMantenimientos!
-                          .map((e) => EstablecimientoCard(model: e))
-                          .toList(),
-                    ),
-        ),
-      ),
+          appBar: AppBar(
+            automaticallyImplyLeading: true,
+            title: Text('Establecimientos', style: headerStyle),
+            actions: const [],
+            centerTitle: true,
+            elevation: 4,
+            toolbarHeight: 80,
+          ),
+          body: SafeArea(
+            //padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 4.0),
+            child: _listaMantenimientos == null
+                ? const Center(
+                    child: SizedBox.square(
+                        dimension: 50.0, child: CircularProgressIndicator()),
+                  )
+                : _listaMantenimientos!.isEmpty
+                    ? const Center(
+                        child: Text("No existen establecimientos registrados"))
+                    : ListView(
+                        children: _listaMantenimientos!
+                            .map((e) => EstablecimientoCard(model: e))
+                            .toList(),
+                      ),
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add),
+            backgroundColor: Colors.cyan,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const EstablishFormWidget(
+                    idEstablishment: 'E5',
+                  ),
+                ),
+              );
+            },
+          )),
     );
   }
 

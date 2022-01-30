@@ -1,4 +1,4 @@
-import 'package:fishome/src/models/user_model.dart';
+import 'package:fixhome/src/models/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 

@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:fishome/src/models/establishment_model.dart';
-import 'package:fishome/src/services/establish_service.dart';
+import 'package:fixhome/src/models/establishment_model.dart';
+import 'package:fixhome/src/services/establish_service.dart';
 
 class EstablishFormWidget extends StatefulWidget {
   const EstablishFormWidget({Key? key, required this.idEstablishment})
@@ -60,7 +60,7 @@ class _EstablishFormWidgetState extends State<EstablishFormWidget> {
                       child: Padding(
                         padding: const EdgeInsets.all(7.0),
                         child: _imagen == null
-                            ? Image.asset('assets/images/generica.jpg')
+                            ? Image.asset('assets/images/logo_large.png')
                             : Image.file(_imagen!),
                       )),
                   Row(
