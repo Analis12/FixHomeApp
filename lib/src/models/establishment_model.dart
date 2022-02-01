@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-Establish establishFromMap(String str) => Establish.fromJson(json.decode(str));
+Establish establishFromJson(String str) => Establish.fromJson(json.decode(str));
 
-String establishToMap(Establish data) => json.encode(data.toMap());
+String establishToMap(Establish data) => json.encode(data.toJson());
 
 class Establish {
   Establish({
@@ -17,7 +17,7 @@ class Establish {
     this.ownerName,
     this.contactOwner,
     this.imageUrl,
-    this.tipo,
+    this.typeEstablish,
   });
 
   String? idEstablecimiento;
@@ -27,7 +27,7 @@ class Establish {
   String? ownerName;
   String? contactOwner;
   String? imageUrl;
-  int? tipo;
+  String? typeEstablish;
 
   factory Establish.fromJson(Map<String, dynamic> json) => Establish(
         idEstablecimiento: json["idEstablecimiento"],
@@ -37,10 +37,10 @@ class Establish {
         ownerName: json["ownerName"],
         contactOwner: json["contactOwner"],
         imageUrl: json["imageURL"],
-        tipo: json["tipo"],
+        typeEstablish: json["typeEstablish"],
       );
 
-  Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toJson() => {
         "idEstablecimiento": idEstablecimiento,
         "name": name,
         "description": description,
@@ -48,6 +48,6 @@ class Establish {
         "ownerName": ownerName,
         "contactOwner": contactOwner,
         "imageURL": imageUrl,
-        "tipo": tipo,
+        "typeEstablish": typeEstablish,
       };
 }

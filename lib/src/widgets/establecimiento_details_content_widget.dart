@@ -29,15 +29,15 @@ class establishDetailsContentWidget extends StatelessWidget {
         ListTile(
             leading: const Icon(Icons.comment),
             title: const Text("Categoria"),
-            subtitle: establish.tipo == 0
+            subtitle: establish.typeEstablish == 0
                 ? const Text("Carpinteria")
-                : establish.tipo == 1
+                : establish.typeEstablish == 1
                     ? const Text("Albañileria")
-                    : establish.tipo == 2
+                    : establish.typeEstablish == 2
                         ? const Text("Cerrajeria")
-                        : establish.tipo == 3
+                        : establish.typeEstablish == 3
                             ? const Text("Electricidad")
-                            : establish.tipo == 4
+                            : establish.typeEstablish == 4
                                 ? const Text("Jardineria")
                                 : const Text("Cerrajeria")),
       ]),

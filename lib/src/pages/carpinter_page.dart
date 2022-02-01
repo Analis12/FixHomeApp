@@ -33,8 +33,15 @@ class _EstablecimientoWidgetState extends State<EstablecimientoWidget> {
     return Material(
       child: Scaffold(
           appBar: AppBar(
+            leading: SizedBox(
+              child: Image.asset(
+                "assets/images/carpinteria.png",
+                width: 180,
+                height: 130,
+              ),
+            ),
             automaticallyImplyLeading: true,
-            title: Text('Establecimientos', style: headerStyle),
+            title: Text('CARPINTERIA', style: headerStyle),
             actions: const [],
             centerTitle: true,
             elevation: 4,

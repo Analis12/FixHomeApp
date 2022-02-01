@@ -34,6 +34,19 @@ class _EstablishFormWidgetState extends State<EstablishFormWidget> {
     return SingleChildScrollView(
       child: Column(
         children: [
+          const Padding(
+              padding: EdgeInsets.only(top: 60),
+              child: Text(
+                "Recomendar un Servicio",
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+              )),
+          const Divider(
+            color: Colors.black,
+            height: 25,
+            thickness: 2,
+            indent: 5,
+            endIndent: 5,
+          ),
           Container(
             margin:
                 const EdgeInsets.symmetric(horizontal: 20.0, vertical: 14.0),
@@ -76,6 +89,21 @@ class _EstablishFormWidgetState extends State<EstablishFormWidget> {
                           label: const Text("Galería")),
                     ],
                   ),
+                  TextFormField(
+                      keyboardType: TextInputType.text,
+                      initialValue: _establish.name,
+                      onSaved: (value) {
+                        //Este evento se ejecuta cuando el Form ha sido guardado localmente
+                        _establish.name =
+                            value; //Asigna el valor del TextFormField al atributo del modelo
+                      },
+                      validator: (value) {
+                        return _validateName(value!);
+                      },
+                      decoration:
+                          const InputDecoration(labelText: "Observación"),
+                      maxLength: 255,
+                      maxLines: 3),
                   Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20.0),
                       child: _onSaving
@@ -129,4 +157,11 @@ class _EstablishFormWidgetState extends State<EstablishFormWidget> {
       Navigator.pop(context);
     }
   }
+}
+
+_validateName(String value) {
+  if (value.length < 15) {
+    return "Debe ingresar al menos 15 caracteres";
+  }
+  return null; //Cuando se retorna nulo el campo te texto está validado
 }
