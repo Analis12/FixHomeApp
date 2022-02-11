@@ -4,8 +4,9 @@ import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class EstablecimientoCard extends StatelessWidget {
-  const EstablecimientoCard({Key? key, required this.model}) : super(key: key);
+class EstablecimientoElectricidadCard extends StatelessWidget {
+  const EstablecimientoElectricidadCard({Key? key, required this.model})
+      : super(key: key);
   final Establish model;
 
   @override
@@ -16,7 +17,7 @@ class EstablecimientoCard extends StatelessWidget {
     double doubleVar = intVar!.toDouble();
     // ignore: avoid_print
     print("3. Cambio de estado");
-    if (model.typeEstablish == "Carpinteria") {
+    if (model.typeEstablish == "Electricidad") {
       return Card(
         borderOnForeground: true,
         shape: roundedRectangle12,
@@ -73,7 +74,7 @@ class EstablecimientoCard extends StatelessWidget {
         ),
       );
     } else {
-      return const Text(" ");
+      return const Text("Aqui va electricidad ");
     }
   }
 }

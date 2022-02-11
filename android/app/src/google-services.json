@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "355096869924",
+    "firebase_url": "https://fixhome-278cf-default-rtdb.firebaseio.com",
+    "project_id": "fixhome-278cf",
+    "storage_bucket": "fixhome-278cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355096869924:android:10c90001cef09c13392cb1",
+        "android_client_info": {
+          "package_name": "com.example.fishome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355096869924-bofrpnmdbhhnha9ui5lhk0pbuhijr2m3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRNRfuL6aTiBEGjf_pBGN6uGWsezEJLCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355096869924-bofrpnmdbhhnha9ui5lhk0pbuhijr2m3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

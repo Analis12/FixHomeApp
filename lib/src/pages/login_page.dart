@@ -1,6 +1,10 @@
 import 'package:fixhome/src/bloc/login_bloc.dart';
+import 'package:fixhome/src/models/user_model.dart';
+import 'package:fixhome/src/providers/main_provider.dart';
+import 'package:fixhome/src/services/user_service.dart';
 import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -16,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.height;
+    final mainProvider = Provider.of<MainProvider>(context);
 
     return SafeArea(
         child: Scaffold(
@@ -88,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (context, snapshot) {
                               return TextField(
                                   style: formStyle,
+                                  keyboardType: TextInputType.emailAddress,
                                   onChanged: _loginBloc.changeEmail,
                                   decoration: InputDecoration(
                                       errorText: snapshot.error?.toString(),
@@ -123,7 +129,23 @@ class _LoginPageState extends State<LoginPage> {
                               stream: _loginBloc.formLoginStream,
                               builder: (context, snapshot) {
                                 return ElevatedButton.icon(
-                                    onPressed: snapshot.hasData ? () {} : null,
+                                    onPressed: snapshot.hasData
+                                        ? () async {
+                                            final usrSrv =
+                                                UsuarioService(); //Servicio
+                                            final usr = User(
+                                                //Modelo
+                                                email: _loginBloc.email,
+                                                password: _loginBloc.password);
+
+                                            Map<String, dynamic> resp =
+                                                await usrSrv.login(usr);
+                                            if (resp.containsKey("idToken")) {
+                                              mainProvider.token =
+                                                  resp['idToken'];
+                                            }
+                                          }
+                                        : null,
                                     icon: const Icon(Icons.login),
                                     label: const Text("Ingresar",
                                         style: TextStyle(

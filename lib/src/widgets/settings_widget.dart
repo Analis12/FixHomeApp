@@ -19,14 +19,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             "Ajustes",
             style: headerStyle,
           ),
           centerTitle: true,
         ),
         body: ListTile(
-          title: Text(
+          title: const Text(
             "Modo Oscuro",
             style: titleStyle,
           ),

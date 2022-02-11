@@ -2,17 +2,17 @@ import 'package:fixhome/src/models/establishment_model.dart';
 import 'package:fixhome/src/services/establish_service.dart';
 import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:fixhome/src/widgets/add_establishment_widget.dart';
-import 'package:fixhome/src/widgets/establishment_card.dart';
+import 'package:fixhome/src/widgets/establishment_albanil_card.dart';
 import 'package:flutter/material.dart';
 
-class EstablecimientoWidget extends StatefulWidget {
-  const EstablecimientoWidget({Key? key}) : super(key: key);
+class EstablecimientoAlbanil extends StatefulWidget {
+  const EstablecimientoAlbanil({Key? key}) : super(key: key);
 
   @override
-  State<EstablecimientoWidget> createState() => _EstablecimientoWidgetState();
+  State<EstablecimientoAlbanil> createState() => _EstablecimientoAlbanilState();
 }
 
-class _EstablecimientoWidgetState extends State<EstablecimientoWidget> {
+class _EstablecimientoAlbanilState extends State<EstablecimientoAlbanil> {
   final EstablecimientoService _establecimientoService =
       EstablecimientoService();
   List<Establish>? _listaEstablecimientos;
@@ -27,20 +27,18 @@ class _EstablecimientoWidgetState extends State<EstablecimientoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: avoid_print
-    print("2. Visualización del widget");
     return Material(
       child: Scaffold(
           appBar: AppBar(
             leading: SizedBox(
               child: Image.asset(
-                "assets/images/carpinteria.png",
+                "assets/images/albañil.png",
                 width: 180,
                 height: 130,
               ),
             ),
             automaticallyImplyLeading: true,
-            title: const Text('CARPINTERIA', style: headerStyle),
+            title: const Text('ALBAÑILERIA', style: headerStyle),
             actions: const [],
             centerTitle: true,
             elevation: 4,
@@ -58,7 +56,7 @@ class _EstablecimientoWidgetState extends State<EstablecimientoWidget> {
                         child: Text("No existen establecimientos registrados"))
                     : ListView(
                         children: _listaEstablecimientos!
-                            .map((e) => EstablecimientoCard(model: e))
+                            .map((e) => EstablecimientoAlbanilCard(model: e))
                             .toList(),
                       ),
           ),

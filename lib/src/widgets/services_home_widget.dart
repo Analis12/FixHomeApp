@@ -1,5 +1,9 @@
-import 'package:fixhome/src/models/establishment_model.dart';
+import 'package:fixhome/src/pages/albanil_page.dart';
 import 'package:fixhome/src/pages/carpinter_page.dart';
+import 'package:fixhome/src/pages/cerrajeria_page.dart';
+import 'package:fixhome/src/pages/electricidad_page.dart';
+import 'package:fixhome/src/pages/electrodomesticos_page.dart';
+import 'package:fixhome/src/pages/jardineria_page.dart';
 import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:fixhome/src/utils/main_menu.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +25,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       key: scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        title: Text('NUESTROS SERVICIOS', style: headerStyle),
+        title: const Text('NUESTROS SERVICIOS', style: headerStyle),
         actions: const [],
         centerTitle: true,
         elevation: 4,
@@ -46,13 +50,65 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   height: 72.3,
                                   child: ListTile(
                                     onTap: () async {
-                                      await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              const EstablecimientoWidget(),
-                                        ),
-                                      );
+                                      if (e.tipo == "1") {
+                                        await Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const EstablecimientoWidget(),
+                                          ),
+                                        );
+                                      } else {
+                                        if (e.tipo == "2") {
+                                          await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const EstablecimientoAlbanil(),
+                                            ),
+                                          );
+                                        } else {
+                                          if (e.tipo == "3") {
+                                            await Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const EstablecimientoCerrajeria(),
+                                              ),
+                                            );
+                                          } else {
+                                            if (e.tipo == "4") {
+                                              await Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const EstablecimientoElectricidad(),
+                                                ),
+                                              );
+                                            } else {
+                                              if (e.tipo == "5") {
+                                                await Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const EstablecimientoJardineria(),
+                                                  ),
+                                                );
+                                              } else {
+                                                if (e.tipo == "6") {
+                                                  await Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const EstablecimientoElectrodomestico(),
+                                                    ),
+                                                  );
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
                                     },
                                     title: Text(e.title, style: headerStyle),
                                     leading: SizedBox(

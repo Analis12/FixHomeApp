@@ -1,9 +1,5 @@
-import 'package:fixhome/src/providers/main_provider.dart';
 import 'package:fixhome/src/utils/main_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-final List<String> _options = ["Inicio", "AgregarF", "Ajustes"];
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);

@@ -18,18 +18,18 @@ List<ItemMenu> menuOptions = [
 class ServiceMenu {
   String title;
   String image;
-  int tipo;
+  String tipo;
   ServiceMenu(this.image, this.title, this.tipo);
 }
 
 List<ServiceMenu> servicios = [
-  ServiceMenu("assets/images/carpinteria.png", "CARPINTERIA", 1),
-  ServiceMenu("assets/images/albañil.png", "ALBAÑILERIA", 2),
-  ServiceMenu("assets/images/cerrajeria.png", "CERRAJERIA", 3),
-  ServiceMenu("assets/images/electricidad.png", "ELECTRICIDAD", 4),
-  ServiceMenu("assets/images/jardineria.png", "JARDINERIA", 5),
-  ServiceMenu(
-      "assets/images/electrodomestico.png", "REPARACION ELECTRODOMESTICOS", 6),
+  ServiceMenu("assets/images/carpinteria.png", "CARPINTERIA", "1"),
+  ServiceMenu("assets/images/albañil.png", "ALBAÑILERIA", "2"),
+  ServiceMenu("assets/images/cerrajeria.png", "CERRAJERIA", "3"),
+  ServiceMenu("assets/images/electricidad.png", "ELECTRICIDAD", "4"),
+  ServiceMenu("assets/images/jardineria.png", "JARDINERIA", "5"),
+  ServiceMenu("assets/images/electrodomestico.png",
+      "REPARACION ELECTRODOMESTICOS", "6"),
 ];
 
 List<Widget> homeWidgets = [
