@@ -67,11 +67,12 @@ class _SignUpPageState extends State<SignUpPage> {
                                       hintText: "Nombre y apellido"));
                             }),
                         StreamBuilder<String>(
-                            stream: _signUpBloc.usernameStream,
+                            stream: _signUpBloc.identificationCardStream,
                             builder: (context, snapshot) {
                               return TextField(
                                   keyboardType: TextInputType.text,
-                                  onChanged: _signUpBloc.changeUsername,
+                                  onChanged:
+                                      _signUpBloc.changeidentificationCard,
                                   decoration: InputDecoration(
                                       errorText: snapshot.error?.toString(),
                                       icon: const Icon(Icons.card_giftcard),

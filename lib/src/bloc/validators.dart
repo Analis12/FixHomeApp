@@ -33,4 +33,47 @@ class Validator {
       }
     },
   );
+
+  final identificationCardValidator =
+      StreamTransformer<String, String>.fromHandlers(
+    handleData: (data, sink) {
+      int cont = 1, contador = 0, aux, porcentaje, verificador;
+      if (data.length == 10) {
+        for (final rune in data.runes) {
+          int valDInt = int.parse(String.fromCharCode(rune));
+          if (cont % 2 == 1) {
+            int mul = valDInt * 2;
+            if (mul >= 10) {
+              aux = mul - 9;
+              contador = contador + aux;
+            } else {
+              contador = contador + mul;
+            }
+          } else {
+            if (cont != 10) {
+              contador = contador + valDInt;
+            }
+          }
+          porcentaje = contador % 10;
+          if (porcentaje == 0) {
+            verificador = 0;
+          } else {
+            verificador = 10 - porcentaje;
+          }
+          if (cont == 10) {
+            if (verificador == valDInt) {
+              // ignore: avoid_print
+              print("Cedula Correcta");
+              sink.add(data);
+            } else {
+              sink.addError('Cédula Incorrecta');
+            }
+          }
+          cont++;
+        }
+      } else {
+        sink.addError('Cédula contiene 10 digitos');
+      }
+    },
+  );
 }
