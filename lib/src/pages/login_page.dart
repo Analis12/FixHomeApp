@@ -140,10 +140,14 @@ class _LoginPageState extends State<LoginPage> {
 
                                             Map<String, dynamic> resp =
                                                 await usrSrv.login(usr);
+                                            // ignore: avoid_print
+                                            print(usr.password);
                                             if (resp.containsKey("idToken")) {
                                               mainProvider.token =
                                                   resp['idToken'];
                                             }
+                                            Navigator.pushNamed(
+                                                context, "/homepage");
                                           }
                                         : null,
                                     icon: const Icon(Icons.login),

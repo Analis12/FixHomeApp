@@ -8,30 +8,24 @@ String userToJson(User data) => json.encode(data.toJson());
 
 class User {
   User({
-    this.displayname,
-    this.identificationCard,
-    this.fechaNacimiento,
+    this.displayName,
     this.email,
     this.password,
-    this.confirmPassword,
-    this.rol,
+    this.role,
+    this.identification,
   });
 
-  String? displayname;
-  String? identificationCard;
-  DateTime? fechaNacimiento;
+  String? displayName;
   String? email;
   String? password;
-  String? confirmPassword;
-  String? rol;
+  String? role;
+  String? identification;
 
   Map<String, dynamic> toJson() => {
-        "name": displayname,
-        "identification_card": identificationCard,
-        "fecha_nacimiento": fechaNacimiento,
+        "displayName": displayName,
         "email": email,
         "password": password,
-        "confirm_password ": confirmPassword,
-        "rol": rol,
+        "role": role,
+        "identification": identification
       };
 }

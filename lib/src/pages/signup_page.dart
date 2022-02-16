@@ -1,9 +1,8 @@
+import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:flutter/material.dart';
 import 'package:fixhome/src/bloc/signup_bloc.dart';
 import 'package:fixhome/src/models/user_model.dart';
 import 'package:fixhome/src/services/user_service.dart';
-import 'package:flutter_holo_date_picker/date_picker.dart';
-import 'package:flutter_holo_date_picker/widget/date_picker_widget.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -15,9 +14,12 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   bool _obscureText = true;
   final SignUpBloc _signUpBloc = SignUpBloc();
-  final List<String> _roles = ["Cliente", "Supervisor", "Dueño"];
+
+  final List<String> _roles = ["Coordinador", "Supervisor", "Líder técnico"];
   String _roleSelected = "Supervisor";
+
   final UsuarioService _usrServ = UsuarioService();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +30,52 @@ class _SignUpPageState extends State<SignUpPage> {
       child: Stack(
         children: [
           Container(
-            color: Theme.of(context).primaryColorDark,
-            height: size * 0.4,
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              stops: [
+                0.6,
+                0.5,
+              ],
+              colors: [
+                Colors.white,
+                Colors.cyan,
+              ],
+            )),
+            height: size * 0.99,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 80.0, left: 35.0, right: 35.0),
+            padding: const EdgeInsets.only(top: 20.0, left: 35.0, right: 35.0),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Text("Registro de usuario",
-                      style: Theme.of(context).textTheme.headline4!.apply(
-                          color: Theme.of(context).scaffoldBackgroundColor)),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                  child: Text(
+                    "Registro de usuario",
+                    style: TextStyle(fontSize: 45, fontWeight: FontWeight.w500),
+                  ),
+                ),
+                const Divider(
+                  color: Colors.black,
+                  height: 25,
+                  thickness: 2,
+                  indent: 5,
+                  endIndent: 5,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(
+                      top: 130.0, left: 35.0, right: 35.0),
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/logo_small.png')),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0),
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -58,6 +94,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             stream: _signUpBloc.usernameStream,
                             builder: (context, snapshot) {
                               return TextField(
+                                  style: formStyle,
+                                  autofocus: true,
                                   keyboardType: TextInputType.emailAddress,
                                   onChanged: _signUpBloc.changeUsername,
                                   decoration: InputDecoration(
@@ -67,60 +105,39 @@ class _SignUpPageState extends State<SignUpPage> {
                                       hintText: "Nombre y apellido"));
                             }),
                         StreamBuilder<String>(
-                            stream: _signUpBloc.identificationCardStream,
+                            stream: _signUpBloc.identificationStream,
                             builder: (context, snapshot) {
                               return TextField(
+                                  style: formStyle,
+                                  autofocus: true,
                                   keyboardType: TextInputType.text,
-                                  onChanged:
-                                      _signUpBloc.changeidentificationCard,
+                                  onChanged: _signUpBloc.changeidentification,
                                   decoration: InputDecoration(
                                       errorText: snapshot.error?.toString(),
                                       icon: const Icon(Icons.card_giftcard),
-                                      labelText: "Cédula",
+                                      labelText: "Cedula de Identidad",
                                       hintText: "1850045376"));
                             }),
-                        Padding(
-                            padding: const EdgeInsets.only(top: 7.0),
-                            child: Text("Ingresar la fecha de nacimiento",
-                                style: Theme.of(context).textTheme.subtitle1)),
-                        DatePickerWidget(
-                            lastDate: DateTime.now(),
-                            looping: false, // default is not looping
-                            dateFormat: "dd-MMMM-yyyy",
-                            locale: DatePicker.localeFromString('es'),
-                            onChange: (DateTime newDate, _) {}),
-                        DropdownButton<String>(
-                            onChanged: (String? newValue) {
-                              _roleSelected = newValue!;
-                              setState(() {});
-                            },
-                            value: _roleSelected,
-                            icon: const Icon(Icons.arrow_downward),
-                            elevation: 16,
-                            style: TextStyle(
-                                color: Theme.of(context).primaryColor),
-                            underline: Container(height: 2),
-                            items: _roles
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList()),
-                        StreamBuilder<String>(builder: (context, snapshot) {
-                          return TextField(
-                              keyboardType: TextInputType.emailAddress,
-                              onChanged: _signUpBloc.changeEmail,
-                              decoration: InputDecoration(
-                                  errorText: snapshot.error?.toString(),
-                                  icon: const Icon(Icons.email),
-                                  labelText: "Correo electrónico",
-                                  hintText: "admin@trifasic.com"));
-                        }),
+                        StreamBuilder<String>(
+                            stream: _signUpBloc.emailStream,
+                            builder: (context, snapshot) {
+                              return TextField(
+                                  style: formStyle,
+                                  autofocus: true,
+                                  keyboardType: TextInputType.emailAddress,
+                                  onChanged: _signUpBloc.changeEmail,
+                                  decoration: InputDecoration(
+                                      errorText: snapshot.error?.toString(),
+                                      icon: const Icon(Icons.email),
+                                      labelText: "Correo electrónico",
+                                      hintText: "admin@fixhome.com"));
+                            }),
                         StreamBuilder<String>(
                             stream: _signUpBloc.passwordStream,
                             builder: (context, snapshot) {
                               return TextField(
+                                  style: formStyle,
+                                  autofocus: true,
                                   onChanged: _signUpBloc.changePassword,
                                   obscureText: _obscureText,
                                   decoration: InputDecoration(
@@ -138,6 +155,26 @@ class _SignUpPageState extends State<SignUpPage> {
                                       icon: const Icon(Icons.lock),
                                       labelText: "Contraseña"));
                             }),
+                        DropdownButton<String>(
+                            onChanged: (String? newValue) {
+                              _obscureText = !_obscureText;
+                              _roleSelected = newValue!;
+                              setState(() {});
+                            },
+                            value: _roleSelected,
+                            autofocus: true,
+                            icon: const Icon(Icons.arrow_downward),
+                            elevation: 16,
+                            style: formStyle,
+                            underline:
+                                Container(height: 2, color: Colors.black),
+                            items: _roles
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value, style: formStyle),
+                              );
+                            }).toList()),
                         Padding(
                           padding: const EdgeInsets.only(top: 30.0),
                           child: StreamBuilder<bool>(
@@ -147,19 +184,26 @@ class _SignUpPageState extends State<SignUpPage> {
                                     onPressed: snapshot.hasData
                                         ? () async {
                                             User usr = User(
-                                                displayname:
+                                                role: _roleSelected,
+                                                displayName:
                                                     _signUpBloc.username,
                                                 email: _signUpBloc.email,
-                                                password: _signUpBloc.password);
-                                            int result =
+                                                password: _signUpBloc.password,
+                                                identification:
+                                                    _signUpBloc.identification);
+                                            int estado1 =
                                                 await _usrServ.postUsuario(usr);
-                                            if (result == 201) {
+
+                                            if (estado1 == 201) {
                                               Navigator.pop(context);
                                             }
                                           }
                                         : null,
-                                    icon: const Icon(Icons.login),
-                                    label: const Text("Ingresar"));
+                                    icon: const Icon(Icons.save),
+                                    label: const Text("Guardar",
+                                        style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.w400)));
                               }),
                         )
                       ],

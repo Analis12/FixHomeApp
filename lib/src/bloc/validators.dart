@@ -34,7 +34,7 @@ class Validator {
     },
   );
 
-  final identificationCardValidator =
+  final identificationValidator =
       StreamTransformer<String, String>.fromHandlers(
     handleData: (data, sink) {
       int cont = 1, contador = 0, aux, porcentaje, verificador;
@@ -77,3 +77,10 @@ class Validator {
     },
   );
 }
+
+final dateValidator = StreamTransformer<String, String>.fromHandlers(
+  handleData: (data, sink) {
+    // ignore: avoid_print
+    print(data);
+  },
+);

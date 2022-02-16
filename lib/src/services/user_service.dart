@@ -8,7 +8,7 @@ class UsuarioService {
   UsuarioService();
 
   final String _urlRoot = "https://fixhome-278cf.web.app/api/registro";
-  final String _firebaseAPIKey = 'AIzaSyBwdjG7lSK2CJ8wfLDpk-r8cJMRktZ2Xn8';
+  final String _firebaseAPIKey = 'AIzaSyDRNRfuL6aTiBEGjf_pBGN6uGWsezEJLCw';
 
   Future<Map<String, dynamic>> login(User usuario) async {
     try {
@@ -17,10 +17,12 @@ class UsuarioService {
         "password": usuario.password,
         "returnSecureToken": true
       };
+
       final queryParams = {"key": _firebaseAPIKey};
       var uri = Uri.https("www.googleapis.com",
           "/identitytoolkit/v3/relyingparty/verifyPassword", queryParams);
       var response = await http.post(uri, body: json.encode(loginBody));
+
       if (response.body.isEmpty) return <String, dynamic>{};
       Map<String, dynamic> decodedResp = json.decode(response.body);
       developer.log(decodedResp.toString());
@@ -35,11 +37,16 @@ class UsuarioService {
     try {
       var uri = Uri.parse(_urlRoot);
       String usuarioBody = userToJson(usuario);
-      final Map<String, String> _headers = {"content-type": "application/json"};
+      final Map<String, String> _headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      };
       var response = await http.post(uri, headers: _headers, body: usuarioBody);
       if (response.body.isEmpty) return 400;
       Map<String, dynamic> content = json.decode(response.body);
-      int result = content["estado"];
+      int result = content["estado1"];
+      // ignore: avoid_print
+      print(content);
       developer.log("Estado $result");
       return result;
     } catch (ex) {
