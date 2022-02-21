@@ -1,6 +1,7 @@
 import 'package:fixhome/src/models/establishment_model.dart';
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class establishDetailsContentWidget extends StatelessWidget {
   const establishDetailsContentWidget({Key? key, required this.establish})
       : super(key: key);

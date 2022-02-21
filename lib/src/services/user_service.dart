@@ -36,7 +36,7 @@ class UsuarioService {
   Future<int> postUsuario(User usuario) async {
     try {
       var uri = Uri.parse(_urlRoot);
-      String usuarioBody = userToJson(usuario);
+      final usuarioBody = userToJson(usuario);
       final Map<String, String> _headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -44,7 +44,7 @@ class UsuarioService {
       var response = await http.post(uri, headers: _headers, body: usuarioBody);
       if (response.body.isEmpty) return 400;
       Map<String, dynamic> content = json.decode(response.body);
-      int result = content["estado1"];
+      int result = content["estado"];
       // ignore: avoid_print
       print(content);
       developer.log("Estado $result");

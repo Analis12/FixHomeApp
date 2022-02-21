@@ -53,7 +53,10 @@ class _SignUpPageState extends State<SignUpPage> {
                   padding: EdgeInsets.symmetric(vertical: 10.0),
                   child: Text(
                     "Registro de usuario",
-                    style: TextStyle(fontSize: 45, fontWeight: FontWeight.w500),
+                    style: TextStyle(
+                        fontSize: 45,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
                   ),
                 ),
                 const Divider(
@@ -172,7 +175,11 @@ class _SignUpPageState extends State<SignUpPage> {
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
-                                child: Text(value, style: formStyle),
+                                child: Text(value,
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black)),
                               );
                             }).toList()),
                         Padding(

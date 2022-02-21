@@ -51,8 +51,10 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.symmetric(vertical: 20.0),
                     child: Text(
                       "Inicio de sesión",
-                      style:
-                          TextStyle(fontSize: 45, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          fontSize: 45,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
                     )),
                 const Divider(
                   color: Colors.black,
@@ -79,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: BoxDecoration(
                     border: Border.all(
                         color: Theme.of(context).hintColor, width: 3.0),
-                    color: const Color(0xFFFFFFFF),
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: Padding(

@@ -10,6 +10,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentTab = 0;
+  // ignore: unused_field
   final PageStorageBucket _bucket = PageStorageBucket();
   @override
   Widget build(BuildContext context) {

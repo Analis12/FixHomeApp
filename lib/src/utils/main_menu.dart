@@ -11,7 +11,6 @@ class ItemMenu {
 
 List<ItemMenu> menuOptions = [
   ItemMenu(Icons.home, "Inicio"),
-  ItemMenu(Icons.add_business_sharp, "Agregar"),
   ItemMenu(Icons.settings, "Ajustes"),
 ];
 
@@ -23,19 +22,13 @@ class ServiceMenu {
 }
 
 List<ServiceMenu> servicios = [
-  ServiceMenu("assets/images/carpinteria.png", "CARPINTERIA", "1"),
-  ServiceMenu("assets/images/albañil.png", "ALBAÑILERIA", "2"),
-  ServiceMenu("assets/images/cerrajeria.png", "CERRAJERIA", "3"),
-  ServiceMenu("assets/images/electricidad.png", "ELECTRICIDAD", "4"),
-  ServiceMenu("assets/images/jardineria.png", "JARDINERIA", "5"),
+  ServiceMenu("assets/images/carpinteria.PNG", "CARPINTERIA", "1"),
+  ServiceMenu("assets/images/albañil.PNG", "ALBAÑILERIA", "2"),
+  ServiceMenu("assets/images/cerrajeria.PNG", "CERRAJERIA", "3"),
+  ServiceMenu("assets/images/electricidad.PNG", "ELECTRICIDAD", "4"),
+  ServiceMenu("assets/images/jardineria.PNG", "JARDINERIA", "5"),
   ServiceMenu("assets/images/electrodomestico.png",
       "REPARACION ELECTRODOMESTICOS", "6"),
 ];
 
-List<Widget> homeWidgets = [
-  const HomePageWidget(),
-  const EstablishFormWidget(
-    idEstablishment: "",
-  ),
-  const SettingsWidget()
-];
+List<Widget> homeWidgets = [const HomePageWidget(), const SettingsWidget()];
