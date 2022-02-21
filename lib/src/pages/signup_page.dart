@@ -15,7 +15,7 @@ class _SignUpPageState extends State<SignUpPage> {
   bool _obscureText = true;
   final SignUpBloc _signUpBloc = SignUpBloc();
 
-  final List<String> _roles = ["Coordinador", "Supervisor", "Líder técnico"];
+  final List<String> _roles = ["Revisor", "Supervisor"];
   String _roleSelected = "Supervisor";
 
   final UsuarioService _usrServ = UsuarioService();
@@ -35,8 +35,8 @@ class _SignUpPageState extends State<SignUpPage> {
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               stops: [
+                0.4,
                 0.6,
-                0.5,
               ],
               colors: [
                 Colors.white,

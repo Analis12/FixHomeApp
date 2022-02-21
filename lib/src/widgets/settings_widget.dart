@@ -31,13 +31,18 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         child: ListView(
           children: [
             Card(
+                child: Image.asset(
+              "assets/images/logo_small_icon_only.png",
+              height: 160,
+            )),
+            Card(
                 child: ListTile(
                     leading: const Icon(Icons.person),
                     title: Text(
                       content["name"],
                       style: StyleSettings,
                     ),
-                    subtitle: const Text("Nombre", style: StyleSettings))),
+                    subtitle: const Text("Usuario", style: StyleSettings))),
             Card(
                 child: ListTile(
                     leading: const Icon(Icons.computer),

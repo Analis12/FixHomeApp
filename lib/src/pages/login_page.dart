@@ -33,8 +33,8 @@ class _LoginPageState extends State<LoginPage> {
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               stops: [
+                0.4,
                 0.6,
-                0.5,
               ],
               colors: [
                 Colors.white,
