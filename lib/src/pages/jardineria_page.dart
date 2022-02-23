@@ -36,7 +36,7 @@ class _EstablecimientoJardineriaState extends State<EstablecimientoJardineria> {
           appBar: AppBar(
             leading: SizedBox(
               child: Image.asset(
-                "assets/images/jardineria.png",
+                "assets/images/jardineria.PNG",
                 width: 180,
                 height: 130,
               ),

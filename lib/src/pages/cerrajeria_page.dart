@@ -36,7 +36,7 @@ class _EstablecimientoCerrajeriaState extends State<EstablecimientoCerrajeria> {
           appBar: AppBar(
             leading: SizedBox(
               child: Image.asset(
-                "assets/images/cerrajeria.png",
+                "assets/images/cerrajeria.PNG",
                 width: 180,
                 height: 130,
               ),

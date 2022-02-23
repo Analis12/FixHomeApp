@@ -33,7 +33,7 @@ class _EstablecimientoAlbanilState extends State<EstablecimientoAlbanil> {
           appBar: AppBar(
             leading: SizedBox(
               child: Image.asset(
-                "assets/images/albañil.png",
+                "assets/images/albañil.PNG",
                 width: 180,
                 height: 130,
               ),

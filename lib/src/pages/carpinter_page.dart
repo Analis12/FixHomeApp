@@ -35,7 +35,7 @@ class _EstablecimientoWidgetState extends State<EstablecimientoWidget> {
           appBar: AppBar(
             leading: SizedBox(
               child: Image.asset(
-                "assets/images/carpinteria.png",
+                "assets/images/carpinteria.PNG",
                 width: 180,
                 height: 130,
               ),

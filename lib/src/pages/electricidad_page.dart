@@ -37,7 +37,7 @@ class _EstablecimientoElectricidadState
           appBar: AppBar(
             leading: SizedBox(
               child: Image.asset(
-                "assets/images/electricidad.png",
+                "assets/images/electricidad.PNG",
                 width: 180,
                 height: 130,
               ),
