@@ -1,5 +1,4 @@
 import 'package:fixhome/src/models/establishment_model.dart';
-import 'package:fixhome/src/pages/details_establishment.dart';
 import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -30,14 +29,7 @@ class EstablecimientoElectrodomesticoCard extends StatelessWidget {
               style: cardtitleStyle,
               textAlign: TextAlign.center,
             ),
-            onTap: () async {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const EstablishmentDetails(),
-                ),
-              );
-            },
+
             // subtitle: Text(model.description ?? ""),
             subtitle: ListTile(
               title: Text(

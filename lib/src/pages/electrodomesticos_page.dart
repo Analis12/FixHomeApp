@@ -1,4 +1,5 @@
 import 'package:fixhome/src/models/establishment_model.dart';
+import 'package:fixhome/src/pages/establishment_form.dart';
 import 'package:fixhome/src/services/establish_service.dart';
 import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:fixhome/src/widgets/add_establishment_widget.dart';
@@ -74,9 +75,7 @@ class _EstablecimientoElectrodomesticoState
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const EstablishFormWidget(
-                    idEstablishment: 'E5',
-                  ),
+                  builder: (context) => const EstablishForm(),
                 ),
               );
             },
