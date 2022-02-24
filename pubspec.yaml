@@ -52,6 +52,7 @@ dependencies:
   form_builder_validators: ^7.4.0
   google_maps_flutter: ^2.1.1
   cloud_firestore: ^3.1.8
+  shimmer_animation: ^2.1.0+1
 
 dependency_overrides:
   # Override for `flutter_local_notifications`:

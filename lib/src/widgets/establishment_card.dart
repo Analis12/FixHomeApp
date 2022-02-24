@@ -4,6 +4,8 @@ import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import 'package:shimmer_animation/shimmer_animation.dart';
+
 class EstablecimientoCard extends StatelessWidget {
   const EstablecimientoCard({Key? key, required this.model}) : super(key: key);
   final Establish model;
@@ -17,53 +19,66 @@ class EstablecimientoCard extends StatelessWidget {
     // ignore: avoid_print
     print("3. Cambio de estado");
     if (model.typeEstablish == "Carpinteria") {
-      return Card(
-        borderOnForeground: true,
-        shape: roundedRectangle12,
-        margin: const EdgeInsets.only(top: 12, left: 20, right: 20),
-        elevation: 5.0,
-        child: SingleChildScrollView(
-          child: ListTile(
-            title: Text(
-              model.name ?? "",
-              style: cardtitleStyle,
-              textAlign: TextAlign.center,
-            ),
-
-            // subtitle: Text(model.description ?? ""),
-            subtitle: ListTile(
+      return Shimmer(
+        child: Card(
+          borderOnForeground: true,
+          shape: roundedRectangle12,
+          margin: const EdgeInsets.only(top: 12, left: 20, right: 20),
+          elevation: 5.0,
+          child: SingleChildScrollView(
+            child: ListTile(
               title: Text(
-                model.description ?? "",
-                style: cardStyle,
+                model.name ?? "",
+                style: cardtitleStyle,
+                textAlign: TextAlign.center,
               ),
-              subtitle: RatingBar.builder(
-                initialRating: doubleVar,
-                minRating: 1,
-                direction: Axis.horizontal,
-                allowHalfRating: false,
-                itemCount: 5,
-                itemPadding: const EdgeInsets.symmetric(horizontal: 1.0),
-                itemBuilder: (context, _) => const Icon(
-                  Icons.star,
-                  color: Colors.amber,
+
+              // subtitle: Text(model.description ?? ""),
+              subtitle: ListTile(
+                title: Text(
+                  model.description ?? "",
+                  style: cardStyle,
                 ),
-                onRatingUpdate: (rating) {
-                  // ignore: avoid_print
-                  print(model.quealification);
-                },
-              ),
-              leading: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  minWidth: 100,
-                  minHeight: 260,
-                  maxWidth: 104,
-                  maxHeight: 264,
+                subtitle: RatingBar.builder(
+                  initialRating: doubleVar,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: false,
+                  itemCount: 5,
+                  itemPadding: const EdgeInsets.symmetric(horizontal: 1.0),
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  onRatingUpdate: (rating) {
+                    // ignore: avoid_print
+                    print(model.quealification);
+                  },
                 ),
-                child: Image.network(Url, fit: BoxFit.fill),
+                leading: ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minWidth: 100,
+                    minHeight: 260,
+                    maxWidth: 104,
+                    maxHeight: 264,
+                  ),
+                  child: Image.network(Url, fit: BoxFit.fill),
+                ),
               ),
             ),
           ),
         ),
+        duration: Duration(seconds: 3),
+        // This is NOT the default value. Default value: Duration(seconds: 0)
+        interval: Duration(seconds: 5),
+        // This is the default value
+        color: Colors.white,
+        // This is the default value
+        colorOpacity: 0.3,
+        // This is the default value
+        enabled: true,
+        // This is the default value
+        direction: ShimmerDirection.fromLTRB(),
       );
     } else {
       return const Padding(
