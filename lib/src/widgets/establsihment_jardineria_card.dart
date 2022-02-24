@@ -66,7 +66,9 @@ class EstablecimientoJardineriaCard extends StatelessWidget {
         ),
       );
     } else {
-      return const Text(" Aqui va jardineria");
+      return const Padding(
+        padding: const EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0),
+      );
     }
   }
 }

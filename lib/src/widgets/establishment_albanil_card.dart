@@ -16,7 +16,7 @@ class EstablecimientoAlbanilCard extends StatelessWidget {
     double doubleVar = intVar!.toDouble();
     // ignore: avoid_print
     print("3. Cambio de estado");
-    if (model.typeEstablish == "Albañil") {
+    if (model.typeEstablish == "Albañileria") {
       return Card(
         borderOnForeground: true,
         shape: roundedRectangle12,
@@ -66,7 +66,9 @@ class EstablecimientoAlbanilCard extends StatelessWidget {
         ),
       );
     } else {
-      return const Text("Aqui va Alabañil ");
+      return const Padding(
+        padding: const EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0),
+      );
     }
   }
 }

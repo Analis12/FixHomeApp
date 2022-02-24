@@ -2,7 +2,6 @@ import 'package:fixhome/src/models/establishment_model.dart';
 import 'package:fixhome/src/pages/establishment_form.dart';
 import 'package:fixhome/src/services/establish_service.dart';
 import 'package:fixhome/src/theme/constant_values.dart';
-import 'package:fixhome/src/widgets/add_establishment_widget.dart';
 import 'package:fixhome/src/widgets/establishment_cerrajeria_card.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +35,7 @@ class _EstablecimientoCerrajeriaState extends State<EstablecimientoCerrajeria> {
           appBar: AppBar(
             leading: SizedBox(
               child: Image.asset(
-                "assets/images/cerrajeria.png",
+                "assets/images/cerrajeria.PNG",
                 width: 180,
                 height: 130,
               ),

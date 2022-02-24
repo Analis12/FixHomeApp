@@ -66,7 +66,9 @@ class EstablecimientoElectricidadCard extends StatelessWidget {
         ),
       );
     } else {
-      return const Text("Aqui va electricidad ");
+      return const Padding(
+        padding: const EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0),
+      );
     }
   }
 }

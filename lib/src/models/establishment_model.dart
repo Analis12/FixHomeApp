@@ -18,6 +18,8 @@ class Establish {
     this.contactOwner,
     this.imageUrl,
     this.typeEstablish,
+    this.lat,
+    this.lng,
   });
 
   String? idEstablecimiento;
@@ -28,6 +30,8 @@ class Establish {
   String? contactOwner;
   String? imageUrl;
   String? typeEstablish;
+  double? lat;
+  double? lng;
 
   factory Establish.fromJson(Map<String, dynamic> json) => Establish(
         idEstablecimiento: json["idEstablecimiento"],
@@ -38,6 +42,8 @@ class Establish {
         contactOwner: json["contactOwner"],
         imageUrl: json["imageURL"],
         typeEstablish: json["typeEstablish"],
+        lat: json["lat"],
+        lng: json["lng"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -49,5 +55,7 @@ class Establish {
         "contactOwner": contactOwner,
         "imageURL": imageUrl,
         "typeEstablish": typeEstablish,
+        "lat": lat,
+        "lng": lng,
       };
 }

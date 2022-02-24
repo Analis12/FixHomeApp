@@ -16,7 +16,7 @@ class EstablecimientoCerrajeriaCard extends StatelessWidget {
     double doubleVar = intVar!.toDouble();
     // ignore: avoid_print
     print("3. Cambio de estado");
-    if (model.typeEstablish == "Cerrajería") {
+    if (model.typeEstablish == "Cerrajeria") {
       return Card(
         borderOnForeground: true,
         shape: roundedRectangle12,
@@ -66,7 +66,9 @@ class EstablecimientoCerrajeriaCard extends StatelessWidget {
         ),
       );
     } else {
-      return const Text(" Aqui va cerrajeria");
+      return const Padding(
+        padding: const EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0),
+      );
     }
   }
 }
