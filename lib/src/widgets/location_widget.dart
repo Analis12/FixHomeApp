@@ -14,23 +14,23 @@ class LocationWidget extends StatefulWidget {
 class _LocationWidgetState extends State<LocationWidget> {
   final Completer<GoogleMapController> _controller = Completer();
 
-  final CameraPosition _kLatacunga = const CameraPosition(
+  final CameraPosition _mkAmbato = const CameraPosition(
     target: LatLng(-1.24167, -78.6197),
-    zoom: 14,
+    zoom: 9,
   );
 
-  final Stream<QuerySnapshot> _mantenimientoStrem =
-      FirebaseFirestore.instance.collection('mantenimientos').snapshots();
+  final Stream<QuerySnapshot> _establecimientoStrem =
+      FirebaseFirestore.instance.collection('establishment').snapshots();
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: _mantenimientoStrem,
+        stream: _establecimientoStrem,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return const Center(
-              child: SizedBox(
-                  child: Text('Error al consultar los mantenimientos.')),
+              child:
+                  SizedBox(child: Text('Error al consultar establecimientos.')),
             );
           }
 
@@ -44,7 +44,7 @@ class _LocationWidgetState extends State<LocationWidget> {
           }
 
           if (snapshot.hasData) {
-            Set<Marker> kMnts =
+            Set<Marker> mkEstablish =
                 snapshot.data!.docs.map((DocumentSnapshot document) {
               Establish model =
                   Establish.fromJson(document.data() as Map<String, dynamic>);
@@ -67,7 +67,8 @@ class _LocationWidgetState extends State<LocationWidget> {
                                           BitmapDescriptor.hueViolet)
                                       : BitmapDescriptor.defaultMarkerWithHue(
                                           BitmapDescriptor.hueGreen),
-                  infoWindow: InfoWindow(title: model.name),
+                  infoWindow:
+                      InfoWindow(title: model.name, snippet: model.description),
                   markerId: MarkerId(model.idEstablecimiento ?? ""),
                   position:
                       LatLng(model.lat ?? -0.9333, model.lng ?? -78.6185));
@@ -76,9 +77,9 @@ class _LocationWidgetState extends State<LocationWidget> {
             }).toSet();
 
             return GoogleMap(
-              markers: kMnts,
+              markers: mkEstablish,
               mapType: MapType.terrain,
-              initialCameraPosition: _kLatacunga,
+              initialCameraPosition: _mkAmbato,
               onMapCreated: (GoogleMapController controller) {
                 _controller.complete(controller);
               },

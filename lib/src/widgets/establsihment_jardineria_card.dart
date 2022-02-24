@@ -2,6 +2,7 @@ import 'package:fixhome/src/models/establishment_model.dart';
 import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 
 class EstablecimientoJardineriaCard extends StatelessWidget {
   const EstablecimientoJardineriaCard({Key? key, required this.model})
@@ -17,12 +18,12 @@ class EstablecimientoJardineriaCard extends StatelessWidget {
     // ignore: avoid_print
     print("3. Cambio de estado");
     if (model.typeEstablish == "Jardineria") {
-      return Card(
-        borderOnForeground: true,
-        shape: roundedRectangle12,
-        margin: const EdgeInsets.only(top: 12, left: 20, right: 20),
-        elevation: 5.0,
-        child: SingleChildScrollView(
+      return Shimmer(
+        child: Card(
+          borderOnForeground: true,
+          shape: roundedRectangle12,
+          margin: const EdgeInsets.only(top: 12, left: 20, right: 20),
+          elevation: 5.0,
           child: ListTile(
             title: Text(
               model.name ?? "",
@@ -64,6 +65,17 @@ class EstablecimientoJardineriaCard extends StatelessWidget {
             ),
           ),
         ),
+        duration: Duration(seconds: 2),
+        // This is NOT the default value. Default value: Duration(seconds: 0)
+        interval: Duration(seconds: 3),
+        // This is the default value
+        color: Colors.cyanAccent,
+        // This is the default value
+        colorOpacity: 0.2,
+        // This is the default value
+        enabled: true,
+        // This is the default value
+        direction: ShimmerDirection.fromRightToLeft(),
       );
     } else {
       return const Padding(

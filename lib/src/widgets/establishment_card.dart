@@ -68,17 +68,17 @@ class EstablecimientoCard extends StatelessWidget {
             ),
           ),
         ),
-        duration: Duration(seconds: 3),
+        duration: Duration(seconds: 2),
         // This is NOT the default value. Default value: Duration(seconds: 0)
-        interval: Duration(seconds: 5),
+        interval: Duration(seconds: 3),
         // This is the default value
-        color: Colors.white,
+        color: Colors.cyanAccent,
         // This is the default value
-        colorOpacity: 0.3,
+        colorOpacity: 0.2,
         // This is the default value
         enabled: true,
         // This is the default value
-        direction: ShimmerDirection.fromLTRB(),
+        direction: ShimmerDirection.fromRTLB(),
       );
     } else {
       return const Padding(

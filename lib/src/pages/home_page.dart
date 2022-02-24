@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 .toList(),
           ),
           floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.add),
+            child: const Icon(Icons.map_sharp),
             backgroundColor: Colors.cyan,
             onPressed: () {
               Navigator.push(
