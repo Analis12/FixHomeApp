@@ -1,6 +1,8 @@
+import 'package:extended_image/extended_image.dart';
 import 'package:fixhome/src/models/establishment_model.dart';
 
 import 'package:fixhome/src/theme/constant_values.dart';
+import 'package:fixhome/src/widgets/image_extended.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -27,6 +29,16 @@ class EstablecimientoCard extends StatelessWidget {
           elevation: 5.0,
           child: SingleChildScrollView(
             child: ListTile(
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ImageExtended(
+                      Url: model.imageUrl ?? "",
+                    ),
+                  ),
+                );
+              },
               title: Text(
                 model.name ?? "",
                 style: cardtitleStyle,
@@ -41,6 +53,7 @@ class EstablecimientoCard extends StatelessWidget {
                 ),
                 subtitle: RatingBar.builder(
                   initialRating: doubleVar,
+                  ignoreGestures: true,
                   minRating: 1,
                   direction: Axis.horizontal,
                   allowHalfRating: false,
@@ -62,7 +75,10 @@ class EstablecimientoCard extends StatelessWidget {
                     maxWidth: 104,
                     maxHeight: 264,
                   ),
-                  child: Image.network(Url, fit: BoxFit.fill),
+                  child: ExtendedImage.network(
+                    Url,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),

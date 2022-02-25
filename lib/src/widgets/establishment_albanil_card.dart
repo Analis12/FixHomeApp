@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
+import 'image_extended.dart';
+
 class EstablecimientoAlbanilCard extends StatelessWidget {
   const EstablecimientoAlbanilCard({Key? key, required this.model})
       : super(key: key);
@@ -25,6 +27,16 @@ class EstablecimientoAlbanilCard extends StatelessWidget {
           margin: const EdgeInsets.only(top: 12, left: 20, right: 20),
           elevation: 5.0,
           child: ListTile(
+            onTap: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ImageExtended(
+                    Url: model.imageUrl ?? "",
+                  ),
+                ),
+              );
+            },
             title: Text(
               model.name ?? "",
               style: cardtitleStyle,
@@ -39,6 +51,7 @@ class EstablecimientoAlbanilCard extends StatelessWidget {
               ),
               subtitle: RatingBar.builder(
                 initialRating: doubleVar,
+                ignoreGestures: true,
                 minRating: 1,
                 direction: Axis.horizontal,
                 allowHalfRating: false,
