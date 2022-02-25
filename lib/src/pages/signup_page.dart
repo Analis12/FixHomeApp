@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fixhome/src/bloc/signup_bloc.dart';
 import 'package:fixhome/src/models/user_model.dart';
 import 'package:fixhome/src/services/user_service.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -187,30 +188,44 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: StreamBuilder<bool>(
                               stream: _signUpBloc.formSignUpStream,
                               builder: (context, snapshot) {
-                                return ElevatedButton.icon(
-                                    onPressed: snapshot.hasData
-                                        ? () async {
-                                            User usr = User(
-                                                role: _roleSelected,
-                                                displayName:
-                                                    _signUpBloc.username,
-                                                email: _signUpBloc.email,
-                                                password: _signUpBloc.password,
-                                                identification:
-                                                    _signUpBloc.identification);
-                                            int estado1 =
-                                                await _usrServ.postUsuario(usr);
+                                return Shimmer(
+                                  child: ElevatedButton.icon(
+                                      onPressed: snapshot.hasData
+                                          ? () async {
+                                              User usr = User(
+                                                  role: _roleSelected,
+                                                  displayName:
+                                                      _signUpBloc.username,
+                                                  email: _signUpBloc.email,
+                                                  password:
+                                                      _signUpBloc.password,
+                                                  identification: _signUpBloc
+                                                      .identification);
+                                              int estado1 = await _usrServ
+                                                  .postUsuario(usr);
 
-                                            if (estado1 == 201) {
-                                              Navigator.pop(context);
+                                              if (estado1 == 201) {
+                                                Navigator.pop(context);
+                                              }
                                             }
-                                          }
-                                        : null,
-                                    icon: const Icon(Icons.save),
-                                    label: const Text("Guardar",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.w400)));
+                                          : null,
+                                      icon: const Icon(Icons.save),
+                                      label: const Text("Guardar",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.w400))),
+                                  duration: Duration(seconds: 2),
+                                  // This is NOT the default value. Default value: Duration(seconds: 0)
+                                  interval: Duration(seconds: 3),
+                                  // This is the default value
+                                  color: Colors.cyanAccent,
+                                  // This is the default value
+                                  colorOpacity: 0.2,
+                                  // This is the default value
+                                  enabled: true,
+                                  // This is the default value
+                                  direction: ShimmerDirection.fromRTLB(),
+                                );
                               }),
                         )
                       ],
