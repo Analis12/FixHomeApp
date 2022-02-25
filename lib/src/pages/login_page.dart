@@ -5,6 +5,7 @@ import 'package:fixhome/src/services/user_service.dart';
 import 'package:fixhome/src/theme/constant_values.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -130,33 +131,47 @@ class _LoginPageState extends State<LoginPage> {
                           child: StreamBuilder<bool>(
                               stream: _loginBloc.formLoginStream,
                               builder: (context, snapshot) {
-                                return ElevatedButton.icon(
-                                    onPressed: snapshot.hasData
-                                        ? () async {
-                                            final usrSrv =
-                                                UsuarioService(); //Servicio
-                                            final usr = User(
-                                                //Modelo
-                                                email: _loginBloc.email,
-                                                password: _loginBloc.password);
+                                return Shimmer(
+                                  child: ElevatedButton.icon(
+                                      onPressed: snapshot.hasData
+                                          ? () async {
+                                              final usrSrv =
+                                                  UsuarioService(); //Servicio
+                                              final usr = User(
+                                                  //Modelo
+                                                  email: _loginBloc.email,
+                                                  password:
+                                                      _loginBloc.password);
 
-                                            Map<String, dynamic> resp =
-                                                await usrSrv.login(usr);
-                                            // ignore: avoid_print
-                                            print(usr.password);
-                                            if (resp.containsKey("idToken")) {
-                                              mainProvider.token =
-                                                  resp['idToken'];
+                                              Map<String, dynamic> resp =
+                                                  await usrSrv.login(usr);
+                                              // ignore: avoid_print
+                                              print(usr.password);
+                                              if (resp.containsKey("idToken")) {
+                                                mainProvider.token =
+                                                    resp['idToken'];
+                                              }
+                                              Navigator.pushNamed(
+                                                  context, "/homepage");
                                             }
-                                            Navigator.pushNamed(
-                                                context, "/homepage");
-                                          }
-                                        : null,
-                                    icon: const Icon(Icons.login),
-                                    label: const Text("Ingresar",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.w400)));
+                                          : null,
+                                      icon: const Icon(Icons.login),
+                                      label: const Text("Ingresar",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.w400))),
+                                  duration: Duration(seconds: 2),
+                                  // This is NOT the default value. Default value: Duration(seconds: 0)
+                                  interval: Duration(seconds: 3),
+                                  // This is the default value
+                                  color: Colors.cyanAccent,
+                                  // This is the default value
+                                  colorOpacity: 0.2,
+                                  // This is the default value
+                                  enabled: true,
+                                  // This is the default value
+                                  direction: ShimmerDirection.fromRTLB(),
+                                );
                               }),
                         )
                       ],
